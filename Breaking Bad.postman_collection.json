@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "b3b435f6-863f-47b0-b7f8-b7fbfb95eda0",
+		"name": "Breaking Bad",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Which episode is titled Rebecca",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cba76438-5ac8-450a-92ba-5cd8e9dc74fb",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Rebecca\");\r",
+							"});\r",
+							"var jsonObject = JSON.parse(responseBody);\r",
+							" for (var i = 0; i< jsonObject.length; i++) {\r",
+							"     var item = jsonObject[i];\r",
+							"     if (item[\"title\"]== \"Rebecca\") {\r",
+							"         console.log(\"Episode ID for Rebecca is \" + item[\"episode_id\"])\r",
+							"     }\r",
+							" }"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://breakingbadapi.com/api/episodes",
+					"protocol": "https",
+					"host": [
+						"breakingbadapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episodes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Find the episode title for the episode that aired on the 19th of August 2012",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "34ffb3e7-2636-43ee-89ca-fe9028978ed9",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"episode_id\");\r",
+							"});\r",
+							"var jsonObject = JSON.parse(responseBody);\r",
+							" for (var i = 0; i< jsonObject.length; i++) {\r",
+							"     var item = jsonObject[i];\r",
+							"     if (item[\"air_date\"] == (\"08-19-2012\")) {\r",
+							"         console.log(\"Episode aired on the 19th of August is \" + item[\"title\"])\r",
+							"         break;\r",
+							"     }\r",
+							" }"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://breakingbadapi.com/api/episodes",
+					"protocol": "https",
+					"host": [
+						"breakingbadapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episodes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Find the episode id and title for the episode in which Gustavo Fring makes his first appearance?",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f21d0f13-746e-4822-8610-128d7a904eb3",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Gustavo Fring\");\r",
+							"});\r",
+							"var jsonObject = JSON.parse(responseBody);\r",
+							" for (var i = 0; i< jsonObject.length; i++) {\r",
+							"     var item = jsonObject[i];\r",
+							"     if (item[\"characters\"].includes (\"Gustavo Fring\")) {\r",
+							"         console.log(\"The first appearance of Gustavo Fring was on episode \" + item[\"episode\"],  \"titled \" + item[\"title\"] )\r",
+							"         break;\r",
+							"     }\r",
+							" }"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BB_URL}}/episodes",
+					"host": [
+						"{{BB_URL}}"
+					],
+					"path": [
+						"episodes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Which character is portrayed by Patrick Fabian?",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38d14a4-dfef-4f53-9634-dcf539c51e9e",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Patrick Fabian\");\r",
+							"});\r",
+							"var jsonObject = JSON.parse(responseBody);\r",
+							" for (var i = 0; i< jsonObject.length; i++) {\r",
+							"     var item = jsonObject[i];\r",
+							"     if (item[\"portrayed\"] == \"Patrick Fabian\") {\r",
+							"         console.log(\"The character portrayed by Patrick Fabian is \" + item[\"name\"])\r",
+							"         break;\r",
+							"     }\r",
+							" }"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://breakingbadapi.com/api/characters",
+					"protocol": "https",
+					"host": [
+						"breakingbadapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Who's words are these \"Chemistry is the study of matter, but I prefer to see it at the study of change.\"?",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://breakingbadapi.com/api/quotes",
+					"protocol": "https",
+					"host": [
+						"breakingbadapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"quotes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. How many deaths are there in Breaking Bad?",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BB_URL}}/death-count",
+					"host": [
+						"{{BB_URL}}"
+					],
+					"path": [
+						"death-count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8. Which episode has the most number of deaths?",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://breakingbadapi.com/api/deaths",
+					"protocol": "https",
+					"host": [
+						"breakingbadapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"deaths"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9. What is the title of episode 8 of season 2 of Better Call Saul",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://breakingbadapi.com/api/episodes/80",
+					"protocol": "https",
+					"host": [
+						"breakingbadapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episodes",
+						"80"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. How many deaths are there in Breaking Bad? Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BB_URL}}/death-count",
+					"host": [
+						"{{BB_URL}}"
+					],
+					"path": [
+						"death-count"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "10386c91-52c7-4c5e-ab09-741ce88d513b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bb7f83bd-7045-4d7e-ae44-dc12a336e394",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
